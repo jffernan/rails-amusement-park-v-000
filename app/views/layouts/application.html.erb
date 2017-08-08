@@ -23,7 +23,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-           <!--  nav here -->
+            <% if current_user %>
+              <li><%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :delete%></li>
+              <li><%= link_to "See attractions", {:controller=> "attractions", :action=> "index"} %></li>
+            <% else %>
+              <li><%= link_to "Sign Up", {:controller=> "users", :action=> "new"} %></li>
+              <li><%= link_to "Sign In", {:controller=> "sessions", :action=> "new"} %></li>
+            <% end  %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
